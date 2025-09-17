@@ -110,75 +110,76 @@ setState(() {
            } else {
             var added = snapshot.data!;
             return Expanded(
-             child: ListView.builder(
-              itemCount: added.length,
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-              return InkWell(
-                onTap: () {
-                  newNote = added[index];
-                  String? id = added[index].id;
-                  // print("${id} iddddddddddddddddddd");
-                  TextEditingController titleController =
-                  TextEditingController(text: added[index].title);
-                  TextEditingController contentController =
-                  TextEditingController(text: added[index].content);
+             child:
+             ListView.builder(
+                 itemCount: added.length,
+                 shrinkWrap: true,
+                 itemBuilder: (context, index) {
+                   return InkWell(
+                     onTap: () {
+                       newNote = added[index];
+                       String? id = added[index].id;
+                       // print("${id} iddddddddddddddddddd");
+                       TextEditingController titleController =
+                       TextEditingController(text: added[index].title);
+                       TextEditingController contentController =
+                       TextEditingController(text: added[index].content);
 
 
-                  showDialog(
-                      context: context,
+                       showDialog(
+                           context: context,
 
-                      builder: (context) =>
-                          AlertDialog(
-                            title: Text('Edit Note'),
-                            content: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                TextField(
-                                    controller: titleController,
-                                    decoration: InputDecoration(
-                                        labelText: 'Title')),
-                                TextField(
-                                    controller: contentController,
-                                    decoration: InputDecoration(
-                                        labelText: 'Content')),
-                              ],),
-                            actions: [
-                              ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text("Cancel")
-                              ),
-                              ElevatedButton(
-                                  onPressed: () {
-                                    print(added[index].id);
-                                    FirebaseFirestore.instance.collection('notes')
-                                        .doc(added[index].id)
-                                        .update(newNote?.copyWith(
-                                        title: titleController.text,
-                                        content: contentController.text).toMap());
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text('Update')
-                              ),
-                            ],
-                          ));
-                },
-                child: ListTile(
-                  title: Text(added[index].title),
-                  subtitle: Text(added[index].content),
-                  trailing: InkWell(
-                      onTap: () {
-                        FirebaseFirestore.instance.collection('notes').doc(
-                            added[index].id).delete();
-                      },
-                      child: Icon(Icons.delete)
-                  ),
-                ),
+                           builder: (context) =>
+                               AlertDialog(
+                                 title: Text('Edit Note'),
+                                 content: Column(
+                                   mainAxisSize: MainAxisSize.min,
+                                   children: [
+                                     TextField(
+                                         controller: titleController,
+                                         decoration: InputDecoration(
+                                             labelText: 'Title')),
+                                     TextField(
+                                         controller: contentController,
+                                         decoration: InputDecoration(
+                                             labelText: 'Content')),
+                                   ],),
+                                 actions: [
+                                   ElevatedButton(
+                                       onPressed: () {
+                                         Navigator.pop(context);
+                                       },
+                                       child: Text("Cancel")
+                                   ),
+                                   ElevatedButton(
+                                       onPressed: () {
+                                         print(added[index].id);
+                                         FirebaseFirestore.instance.collection('notes')
+                                             .doc(added[index].id)
+                                             .update(newNote?.copyWith(
+                                             title: titleController.text,
+                                             content: contentController.text).toMap());
+                                         Navigator.pop(context);
+                                       },
+                                       child: Text('Update')
+                                   ),
+                                 ],
+                               ));
+                     },
+                     child: ListTile(
+                       title: Text(added[index].title),
+                       subtitle: Text(added[index].content),
+                       trailing: InkWell(
+                           onTap: () {
+                             FirebaseFirestore.instance.collection('notes').doc(
+                                 added[index].id).delete();
+                           },
+                           child: Icon(Icons.delete)
+                       ),
+                     ),
 
-              );
-            }),
+                   );
+                 }),
       );
     }}),
         ],

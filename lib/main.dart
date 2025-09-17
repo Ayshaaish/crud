@@ -77,7 +77,7 @@ final streamProvider=StreamProvider<int>((ref) {
 },);
 ///auto dispose modifier
 final GoRouter _router=GoRouter(routes:[
-  GoRoute(path:"/" , builder: (context,state)=>const Home()),
+  GoRoute(path:"/" , builder:(context,state)=>const Home()),
   GoRoute(path:"/counter",builder: (context,state)=>const Counter())
 ]);
 ///autodispose
@@ -110,7 +110,15 @@ Future<void> main() async {
   await GetStorage.init();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
+    options: FirebaseOptions(
+        apiKey: "AIzaSyA5rxAYAxFSKklE_4H1oCRX2kUE-nnWvQM",
+        authDomain: "crud-6f53d.firebaseapp.com",
+        projectId: "crud-6f53d",
+        storageBucket: "crud-6f53d.firebasestorage.app",
+        messagingSenderId: "814269916408",
+        appId: "1:814269916408:web:e6cd4db690b73afd65470d",
+        measurementId: "G-W56HMDLC08"    ),
+    // options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(
     DevicePreview(
@@ -138,7 +146,7 @@ class MyApp extends ConsumerWidget {
         //       debugShowCheckedModeBanner: false,
         // themeMode: themeMode,
         debugShowCheckedModeBanner: false,
-           home:ImageTextScanner(),
+           home:SplashScreen(),
 
       ),
       // child: MaterialApp.router(
