@@ -1,0 +1,133 @@
+import 'dart:convert';
+
+class Customer {
+  int customerid;
+  String customername;
+  int customercode;
+  String address;
+  String email;
+  double latitude;
+  double longitude;
+  String landmark;
+  int phonenumber;
+  String website;
+  String state;
+  String country;
+  int vatno;
+  int openingbalance;
+  int customerbalance;
+  int customeraccount;
+  int branchid;
+  int crlimit;
+  int points;
+  int routeid;
+  int deleted;
+  int discount;
+  int ledgerid;
+  String ledgername;
+  int accountgroup;
+  int rootid;
+  String interestcalculation;
+  String creditordebit;
+  String narration;
+  double currentbalance;
+
+  Customer({
+    required this.customerid,
+    required this.customername,
+    required this.customercode,
+    required this.address,
+    required this.email,
+    required this.latitude,
+    required this.longitude,
+    required this.landmark,
+    required this.phonenumber,
+    required this.website,
+    required this.state,
+    required this.country,
+    required this.vatno,
+    required this.openingbalance,
+    required this.customerbalance,
+    required this.customeraccount,
+    required this.branchid,
+    required this.crlimit,
+    required this.points,
+    required this.routeid,
+    required this.deleted,
+    required this.discount,
+    required this.ledgerid,
+    required this.ledgername,
+    required this.accountgroup,
+    required this.rootid,
+    required this.interestcalculation,
+    required this.creditordebit,
+    required this.narration,
+    required this.currentbalance,
+  });
+
+  factory Customer.fromJson(Map<String, dynamic> json) => Customer(
+    customerid: json["customerid"],
+    customername: json["customername"],
+    customercode: int.tryParse(json["customercode"].toString())??0,
+    address: json["address"].toString(),
+    email: json["email"].toString(),
+    latitude: json["latitude"]?.toDouble(),
+    longitude: json["longitude"]?.toDouble(),
+    landmark: json["landmark"].toString(),
+    phonenumber: int.tryParse(json["phonenumber"].toString())??0,
+    website: json["website"],
+    state: json["state"],
+    country: json["country"],
+    vatno: int.tryParse(json["vatno"].toString())??0,
+    openingbalance: json["openingbalance"],
+    customerbalance: json["customerbalance"],
+    customeraccount: json["customeraccount"],
+    branchid: json["branchid"],
+    crlimit: json["crlimit"],
+    points: json["points"],
+    routeid: json["routeid"],
+    deleted: json["deleted"],
+    discount: json["discount"],
+    ledgerid: json["ledgerid"],
+    ledgername: json["ledgername"].toString(),
+    accountgroup: json["accountgroup"],
+    rootid: json["rootid"],
+    interestcalculation: json["interestcalculation"],
+    creditordebit: json["creditordebit"],
+    narration: json["narration"],
+    currentbalance: double.tryParse(json["currentbalance"].toString())??0,
+  );
+
+  Map<String, dynamic> toJson() => {
+    "customerid": customerid,
+    "customername": customername,
+    "customercode": customercode,
+    "address": address,
+    "email": email,
+    "latitude": latitude,
+    "longitude": longitude,
+    "landmark": landmark,
+    "phonenumber": phonenumber,
+    "website": website,
+    "state": state,
+    "country": country,
+    "vatno": vatno,
+    "openingbalance": openingbalance,
+    "customerbalance": customerbalance,
+    "customeraccount": customeraccount,
+    "branchid": branchid,
+    "crlimit": crlimit,
+    "points": points,
+    "routeid": routeid,
+    "deleted": deleted,
+    "discount": discount,
+    "ledgerid": ledgerid,
+    "ledgername": ledgername,
+    "accountgroup": accountgroup,
+    "rootid": rootid,
+    "interestcalculation": interestcalculation,
+    "creditordebit": creditordebit,
+    "narration": narration,
+    "currentbalance": currentbalance,
+  };
+}
